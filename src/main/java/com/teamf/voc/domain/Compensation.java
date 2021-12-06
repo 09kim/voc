@@ -21,12 +21,11 @@ public class Compensation {
 
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "voc_id")
-    @JsonBackReference
+    @JsonBackReference(value = "voc_id")
     private Claim claim;
 
-    @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "penalty_id")
-    @JsonBackReference
+    @OneToOne(fetch = LAZY, mappedBy = "compensation",cascade = CascadeType.ALL)
+    @JsonBackReference(value = "penalty_id")
     private CompensationPenalty compensationPenalty;
 
     private int compensation_amount;

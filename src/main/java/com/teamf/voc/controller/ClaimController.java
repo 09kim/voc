@@ -5,7 +5,9 @@ import com.teamf.voc.domain.Claim;
 import com.teamf.voc.service.AdminService;
 import com.teamf.voc.service.CarrierInformationService;
 import com.teamf.voc.service.ClaimService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -15,18 +17,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/claim")
+@RequestMapping("/api/claim")
+@RequiredArgsConstructor
 @Slf4j
 public class ClaimController {
 
-    @Autowired
-    private ClaimService claimService;
-
-    @Autowired
-    private CarrierInformationService carrierInformationService;
-
-    @Autowired
-    private AdminService adminService;
+    private final ClaimService claimService;
+    private final CarrierInformationService carrierInformationService;
+    private final AdminService adminService;
 
     @GetMapping("/findAll")
     public List<Claim> getClaimService() {
@@ -43,7 +41,7 @@ public class ClaimController {
 //        return claimService.findClaims();
 //    }
 
-    @PostMapping("/saveClaim")
+    @PostMapping("/save")
     public ResponseEntity<String> insertClaim(@RequestBody Claim claim) {
 
         Long admin = adminService.createAdmin();
@@ -54,7 +52,11 @@ public class ClaimController {
         return ResponseEntity.ok().body("ok");
     }
 
+    @GetMapping("/findVocList")
+    public List<Claim> getVocList() {
 
 
 
+        return claimService.findVocList();
+    }
 }

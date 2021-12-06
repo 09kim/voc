@@ -29,9 +29,12 @@ public class ClaimService {
         return claimRepository.findAll();
     }
 
-    public Claim createClaim(Long adminId, Long carrierInformationId, Claim claim1) {
+    public Claim findOne(Long id) {
+        return claimRepository.findOne(id);
+    }
 
-        Claim claim = new Claim();
+    public Claim createClaim(Long adminId, Long carrierInformationId, Claim claim) {
+
         Admin admin = adminRepository.findOne(adminId);
         CarrierInformation carrierInformation = carrierInformationRepository.findOne(carrierInformationId);
 
@@ -49,10 +52,15 @@ public class ClaimService {
 //        claim.setIs_crr_objection(BoolCheck.Y);
 //        claim.setIs_compensation(BoolCheck.N);
 
+
         claimRepository.save(claim);
 
         return claim;
 
+    }
+
+    public List<Claim> findVocList() {
+        return claimRepository.findVocList();
     }
 
 

@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 @Getter @Setter
 public class ClaimDetailHistory {
@@ -16,15 +18,10 @@ public class ClaimDetailHistory {
     @Column(name = "voc_history_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "claim_detail_id")
-    @JsonBackReference
+    @JsonBackReference(value = "claim_detail_id")
     private ClaimDetail claimDetail;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "voc_id")
-    @JsonBackReference
-    private Claim claim;
 
     @Lob
     private String attributable_content;

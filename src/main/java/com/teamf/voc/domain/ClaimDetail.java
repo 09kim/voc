@@ -22,11 +22,11 @@ public class ClaimDetail {
 
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "voc_id")
-    @JsonBackReference
+    @JsonBackReference(value = "voc_id")
     private Claim claim;
 
-    @OneToMany(mappedBy = "claim")
-    @JsonBackReference
+    @OneToMany(mappedBy = "claimDetail", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "claimDetailHistory")
     private List<ClaimDetailHistory> claimDetailHistoryList = new ArrayList<>();
 
     @Lob

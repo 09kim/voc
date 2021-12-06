@@ -22,7 +22,7 @@ public class CarrierInformation {
     private CustomerOrDeliveryWorker type; // 배송타입 (고객사(C) / 배송기사(D))
 
     @OneToMany(mappedBy = "carrierInformation")
-    @JsonBackReference
+    @JsonBackReference(value = "carrierInformation")
     private List<Claim> claimList = new ArrayList<>();
 
     @Embedded

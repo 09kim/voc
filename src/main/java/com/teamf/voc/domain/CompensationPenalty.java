@@ -19,8 +19,9 @@ public class CompensationPenalty {
     @Column(name = "penalty_id")
     private Long id;
 
-    @OneToOne(fetch = LAZY, mappedBy = "compensationPenalty")
-    @JsonBackReference
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "compensation_id")
+    @JsonBackReference(value = "compensation")
     private Compensation compensation;
 
     private int code;

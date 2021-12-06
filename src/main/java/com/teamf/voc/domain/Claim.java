@@ -21,20 +21,20 @@ public class Claim {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "admin_id")
-    @JsonBackReference
+    @JsonBackReference(value = "admin_id")
     private Admin admin;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "crr_id")
-    @JsonBackReference
+    @JsonBackReference(value = "crr_id")
     private CarrierInformation carrierInformation;
 
-    @OneToOne(fetch = LAZY, mappedBy = "claim")
-    @JsonBackReference
+    @OneToOne(fetch = LAZY, mappedBy = "claim", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "claimDetail")
     private ClaimDetail claimDetail;
 
-    @OneToOne(fetch = LAZY, mappedBy = "claim")
-    @JsonBackReference
+    @OneToOne(fetch = LAZY, mappedBy = "claim", cascade = CascadeType.ALL)
+    @JsonBackReference(value = "compensation")
     private Compensation compensation;
 
     private String name;
@@ -74,6 +74,21 @@ public class Claim {
 //        claim.setUpdate_date(LocalDateTime.now());
 //        return claim;
 //    }
+
+    public static Claim createClaim(Admin admin, CarrierInformation carrierInformation, ClaimDetail claimDetail, Compensation compensation) {
+
+        Claim claim = new Claim();
+        claim.setAdmin(admin);
+        claim.setCarrierInformation(carrierInformation);
+        claim.setClaimDetail(claimDetail);
+        claim.setCompensation(compensation);
+        claim.setReg_date(LocalDateTime.now());
+
+
+
+        return claim;
+
+    }
 
 
 

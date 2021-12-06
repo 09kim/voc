@@ -29,5 +29,10 @@ public class CompensationRepository {
         return em.find(Compensation.class, id);
     }
 
+    public List<Compensation> findVocList() {
+        return em.createQuery("select c from Compensation c join fetch c.claim", Compensation.class)
+                .getResultList();
+    }
+
 
 }

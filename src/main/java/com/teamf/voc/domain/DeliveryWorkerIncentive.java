@@ -15,7 +15,7 @@ public class DeliveryWorkerIncentive {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "crr_id")
-    @JsonBackReference
+    @JsonBackReference(value = "crr_id")
     private CarrierInformation carrierInformation;
 
     private int commission;

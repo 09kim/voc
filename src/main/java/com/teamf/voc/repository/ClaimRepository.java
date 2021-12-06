@@ -1,6 +1,7 @@
 package com.teamf.voc.repository;
 
 import com.teamf.voc.domain.Claim;
+import com.teamf.voc.domain.enums.BoolCheck;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -29,6 +30,17 @@ public class ClaimRepository {
     public List<Claim> findByName(String name) {
         return em.createQuery("select c from Claim c where c.name = :name", Claim.class)
                 .setParameter("name", name)
+                .getResultList();
+    }
+
+    public Claim findObjection() {
+        return em.createQuery("select c from Claim c where c.is_crr_objection = :boolCheck", Claim.class)
+                .setParameter("boolCheck", BoolCheck.Y)
+                .getSingleResult();
+    }
+
+    public List<Claim> findVocList() {
+        return em.createQuery("select c from Claim c join fetch c.admin", Claim.class)
                 .getResultList();
     }
 
