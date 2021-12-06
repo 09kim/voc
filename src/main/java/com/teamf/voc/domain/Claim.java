@@ -1,5 +1,6 @@
 package com.teamf.voc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.teamf.voc.domain.enums.BoolCheck;
 import com.teamf.voc.domain.enums.CustomerOrDeliveryWorker;
 import lombok.Getter;
@@ -14,22 +15,26 @@ import static javax.persistence.FetchType.*;
 @Getter @Setter
 public class Claim {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "voc_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "admin_id")
+    @JsonBackReference
     private Admin admin;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "crr_id")
+    @JsonBackReference
     private CarrierInformation carrierInformation;
 
     @OneToOne(fetch = LAZY, mappedBy = "claim")
+    @JsonBackReference
     private ClaimDetail claimDetail;
 
     @OneToOne(fetch = LAZY, mappedBy = "claim")
+    @JsonBackReference
     private Compensation compensation;
 
     private String name;

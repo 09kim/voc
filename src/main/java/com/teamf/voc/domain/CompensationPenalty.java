@@ -1,5 +1,6 @@
 package com.teamf.voc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.teamf.voc.domain.enums.BoolCheck;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,11 +15,12 @@ import static javax.persistence.FetchType.*;
 public class CompensationPenalty {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "penalty_id")
     private Long id;
 
     @OneToOne(fetch = LAZY, mappedBy = "compensationPenalty")
+    @JsonBackReference
     private Compensation compensation;
 
     private int code;

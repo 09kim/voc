@@ -6,12 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class ClaimDetailHistory {
+public class ClaimDetailHistoryRepository {
 
     @PersistenceContext
     private EntityManager em;
 
-    public void save(ClaimDetailHistory claimDetailHistory) {
+    public void save(ClaimDetailHistoryRepository claimDetailHistory) {
         em.persist(claimDetailHistory);
     }
 

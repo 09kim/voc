@@ -1,10 +1,12 @@
 package com.teamf.voc;
 
+import com.teamf.voc.domain.Admin;
 import com.teamf.voc.domain.Claim;
 import com.teamf.voc.domain.Compensation;
 import com.teamf.voc.repository.AdminRepository;
 import com.teamf.voc.repository.ClaimRepository;
 import com.teamf.voc.repository.CompensationRepository;
+import com.teamf.voc.service.AdminService;
 import com.teamf.voc.service.ClaimService;
 import com.teamf.voc.service.CompensationService;
 import org.junit.jupiter.api.Test;
@@ -27,18 +29,13 @@ class VocApplicationTests {
 
 	@Autowired ClaimService claimService;
 	@Autowired CompensationService compensationService;
+	@Autowired AdminService adminService;
 
 	@Test
 	public void fuck() throws Exception {
 
-		Compensation compensation = new Compensation();
-
-//		Claim a =new Claim();
-//		em.persist(a);
-//		compensation.setClaim(a);
-
-		compensationRepository.save(compensation);
-		compensationService.findCompensations();
+		Admin a = new Admin();
+		em.persist(a);
 
 
 

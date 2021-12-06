@@ -3,10 +3,7 @@ package com.teamf.voc.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,7 +11,7 @@ import java.time.LocalDateTime;
 public class Admin {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "admin_id")
     private Long id;
 
@@ -31,6 +28,7 @@ public class Admin {
         admin.setTel_no("02-0000-0000");
         admin.setMobile("010-5520-1984");
         admin.setReg_date(LocalDateTime.now());
+        admin.setLeave_date(LocalDateTime.now());
         return admin;
     }
 
