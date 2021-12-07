@@ -2,9 +2,11 @@ package com.teamf.voc.controller;
 
 import com.teamf.voc.domain.Compensation;
 import com.teamf.voc.domain.CompensationPenalty;
-import com.teamf.voc.service.ClaimService;
+import com.teamf.voc.domain.enums.BoolCheck;
 import com.teamf.voc.service.CompensationPenaltyService;
 import com.teamf.voc.service.CompensationService;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -27,5 +29,24 @@ public class CompensationPenaltyController {
         return ResponseEntity.ok().body("ok");
 
     }
+
+    @PatchMapping("/update/push/{compensationPenaltyId}")
+    public updateResponse updateIsPush(@PathVariable Long compensationPenaltyId)
+    {
+        compensationPenaltyService.updateIsPush(compensationPenaltyId);
+        CompensationPenalty compensationPenalty = compensationPenaltyService.findOne(compensationPenaltyId);
+
+        return new updateResponse(compensationPenalty.getIs_push());
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class updateResponse {
+        private BoolCheck penalty_is_push;
+    }
+
+
+
+
 
 }

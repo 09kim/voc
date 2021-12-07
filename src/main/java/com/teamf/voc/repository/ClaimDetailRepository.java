@@ -27,9 +27,4 @@ public class ClaimDetailRepository {
         return em.find(ClaimDetail.class, id);
     }
 
-
-
-
-
-
 }

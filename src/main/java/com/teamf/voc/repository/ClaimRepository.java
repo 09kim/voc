@@ -39,8 +39,13 @@ public class ClaimRepository {
                 .getSingleResult();
     }
 
+
     public List<Claim> findVocList() {
-        return em.createQuery("select c from Claim c join fetch c.admin", Claim.class)
+        return em.createQuery(
+                "select c from Claim c" +
+                        " join fetch c.compensation co" +
+                        " join fetch c.claimDetail cd" +
+                        " join fetch co.compensationPenalty cp", Claim.class)
                 .getResultList();
     }
 

@@ -1,6 +1,5 @@
 package com.teamf.voc.repository;
 
-import com.teamf.voc.domain.Compensation;
 import com.teamf.voc.domain.CompensationPenalty;
 import org.springframework.stereotype.Repository;
 
@@ -27,5 +26,6 @@ public class CompensationPenaltyRepository {
     public CompensationPenalty findOne(Long id) {
         return em.find(CompensationPenalty.class, id);
     }
+
 
 }

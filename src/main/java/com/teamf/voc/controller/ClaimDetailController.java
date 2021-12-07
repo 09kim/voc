@@ -2,7 +2,6 @@ package com.teamf.voc.controller;
 
 import com.teamf.voc.domain.Compensation;
 import com.teamf.voc.service.ClaimDetailService;
-import com.teamf.voc.service.CompensationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

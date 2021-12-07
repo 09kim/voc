@@ -40,17 +40,4 @@ public class ClaimDetail {
     private LocalDateTime update_date_attributable;
     private LocalDateTime update_date_crr_objection;
 
-    public static ClaimDetail createClaimDetail(Claim claim) {
-        ClaimDetail claimDetail = new ClaimDetail();
-        claimDetail.setClaim(claim);
-        claimDetail.setAttributable_content("냉동차 에어컨 고장");
-        claimDetail.setReg_date_attributable(LocalDateTime.now());
-        claimDetail.setReg_date_crr_objection(LocalDateTime.now());
-        claimDetail.setUpdate_date_attributable(LocalDateTime.now());
-        claimDetail.setUpdate_date_crr_objection(LocalDateTime.now());
-
-        return claimDetail;
-    }
-
-
 }

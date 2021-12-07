@@ -65,32 +65,4 @@ public class Claim {
     private LocalDateTime reg_date;    // 접수시간
     private LocalDateTime update_date; // 갱신시간
 
-
-//    public static Claim createClaim(Admin admin, CarrierInformation carrierInformation) {
-//        Claim claim = new Claim();
-//        claim.setAdmin(admin);
-//        claim.setCarrierInformation(carrierInformation);
-//        claim.setReg_date(LocalDateTime.now());
-//        claim.setUpdate_date(LocalDateTime.now());
-//        return claim;
-//    }
-
-    public static Claim createClaim(Admin admin, CarrierInformation carrierInformation, ClaimDetail claimDetail, Compensation compensation) {
-
-        Claim claim = new Claim();
-        claim.setAdmin(admin);
-        claim.setCarrierInformation(carrierInformation);
-        claim.setClaimDetail(claimDetail);
-        claim.setCompensation(compensation);
-        claim.setReg_date(LocalDateTime.now());
-
-
-
-        return claim;
-
-    }
-
-
-
-
 }

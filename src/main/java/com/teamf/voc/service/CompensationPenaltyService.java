@@ -1,10 +1,9 @@
 package com.teamf.voc.service;
 
 
-import com.teamf.voc.domain.Claim;
 import com.teamf.voc.domain.Compensation;
 import com.teamf.voc.domain.CompensationPenalty;
-import com.teamf.voc.repository.ClaimRepository;
+import com.teamf.voc.domain.enums.BoolCheck;
 import com.teamf.voc.repository.CompensationPenaltyRepository;
 import com.teamf.voc.repository.CompensationRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +36,18 @@ public class CompensationPenaltyService {
 
         return compensationPenalty;
 
+    }
+
+    public CompensationPenalty findOne(Long id) {
+        return compensationPenaltyRepository.findOne(id);
+    }
+
+
+    public void updateIsPush(Long id) {
+        CompensationPenalty compensationPenalty = compensationPenaltyRepository.findOne(id);
+
+        compensationPenalty.setIs_push(BoolCheck.Y);
+        compensationPenalty.getCompensation().getClaim().setIs_delivery_open(BoolCheck.Y);
     }
 
 }

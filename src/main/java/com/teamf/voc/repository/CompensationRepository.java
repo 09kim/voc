@@ -1,6 +1,5 @@
 package com.teamf.voc.repository;
 
-import com.teamf.voc.domain.Claim;
 import com.teamf.voc.domain.Compensation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -29,9 +28,11 @@ public class CompensationRepository {
         return em.find(Compensation.class, id);
     }
 
-    public List<Compensation> findVocList() {
-        return em.createQuery("select c from Compensation c join fetch c.claim", Compensation.class)
-                .getResultList();
+    public List<Compensation> findCompensationList() {
+        return em.createQuery(
+                        "select c from Compensation c" +
+                                " join fetch c.claim cl", Compensation.class)
+                                  .getResultList();
     }
 
 

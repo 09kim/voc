@@ -32,12 +32,7 @@ class VocApplicationTests {
 	@Autowired AdminService adminService;
 
 	@Test
-	public void fuck() throws Exception {
-
-		Admin a = new Admin();
-		em.persist(a);
-
-
+	public void getList() throws Exception {
 
 
 	}

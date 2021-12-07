@@ -1,6 +1,5 @@
 package com.teamf.voc.controller;
 
-import com.teamf.voc.domain.ClaimDetail;
 import com.teamf.voc.domain.ClaimDetailHistory;
 import com.teamf.voc.service.ClaimDetailHistoryService;
 import lombok.RequiredArgsConstructor;

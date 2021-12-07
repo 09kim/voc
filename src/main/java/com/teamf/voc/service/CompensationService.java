@@ -36,8 +36,8 @@ public class CompensationService {
 
     }
 
-    public List<Compensation> findVocList() {
-        return compensationRepository.findVocList();
+    public List<Compensation> findCompensationList() {
+        return compensationRepository.findCompensationList();
     }
 
 
